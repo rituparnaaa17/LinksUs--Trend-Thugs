@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Trend Thugs — 360° Social Media Marketing & Production</title>
+<meta name="description" content="Trend Thugs: Full 360° social media marketing & production. We craft high-quality content and run growth across social, listings and ads for brands & creators." />
+
+<!-- Fonts + Tailwind -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: "#0a0a0a",
+          paper: "#ffffff",
+          mute: "#9ca3af",
+          line: "rgba(255,255,255,.12)"
+        },
+        fontFamily: {
+          sans: ["Inter","ui-sans-serif","system-ui","Segoe UI","Roboto","Arial","sans-serif"],
+          display: ["Plus Jakarta Sans","Inter","ui-sans-serif","system-ui"]
+        },
+        boxShadow: {
+          soft: "0 10px 30px rgba(0,0,0,.25)",
+          glow: "0 24px 70px rgba(255,255,255,.08)"
+        },
+        keyframes: {
+          float: { "0%":{ transform:"translateY(0)" }, "100%":{ transform:"translateY(-10px)" }},
+          fadeUp: { "0%":{ opacity:0, transform:"translateY(18px)" }, "100%":{ opacity:1, transform:"translateY(0)" }},
+          slideIn: { "0%":{ opacity:0, transform:"translateX(24px)" }, "100%":{ opacity:1, transform:"translateX(0)" }},
+          scaleIn: { "0%":{ opacity:0, transform:"scale(.96)" }, "100%":{ opacity:1, transform:"scale(1)" }},
+          marquee: { "0%":{ transform:"translateX(0)" }, "100%":{ transform:"translateX(-50%)" }},
+          shine: { "0%":{ backgroundPosition:"-200% 0" }, "100%":{ backgroundPosition:"200% 0" } }
+        },
+        animation: {
+          float: "float 4s ease-in-out infinite alternate",
+          fadeUp: "fadeUp .7s ease both",
+          slideIn: "slideIn .8s ease both",
+          scaleIn: "scaleIn .6s ease both",
+          marquee: "marquee 28s linear infinite",
+          shine: "shine 2.2s linear infinite"
+        },
+        backgroundImage: {
+          grid: "radial-gradient(circle at 1px 1px, rgba(255,255,255,.075) 1px, transparent 1px)"
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  /* Page base */
+  body{ background:#0b0b0b; color:#fff }
+  ::selection{ background:#fff; color:#000 }
+
+  /* Scroll progress bar */
+  #scrollbar{
+    position:fixed; inset:0 auto auto 0; height:3px; width:0%;
+    background:linear-gradient(90deg,#fff,#aaa);
+    z-index:70
+  }
+
+  /* Animated backdrop (gradient mesh + light blobs) */
+  .mesh{
+    background:
+      radial-gradient(40% 35% at 10% 0%, rgba(255,255,255,.09), transparent 60%),
+      radial-gradient(30% 40% at 90% 10%, rgba(255,255,255,.06), transparent 60%),
+      linear-gradient(180deg, #0e0e0e 0%, #0a0a0a 60%, #000 100%);
+  }
+  .blob{ filter:blur(36px); opacity:.25; mix-blend-mode:screen }
+  .reveal{ opacity:0; transform:translateY(16px) }
+  .reveal.show{ opacity:1; transform:none; transition:opacity .7s ease, transform .7s ease }
+</style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- Progress -->
+<div id="scrollbar"></div>
+
+<!-- ===== NAV ===== -->
+<header class="sticky top-0 z-50 bg-black/65 backdrop-blur border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <div class="h-9 w-9 rounded-xl bg-white text-black grid place-items-center font-extrabold">TT</div>
+      <div class="leading-tight">
+        <div class="font-display text-[18px] font-extrabold">Trend Thugs</div>
+        <div class="text-[11px] text-white/60 -mt-0.5">Marketing • Media Production</div>
+      </div>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 text-sm">
+      <a href="#services" class="hover:opacity-80">Services</a>
+      <a href="#work" class="hover:opacity-80">Work</a>
+      <a href="#process" class="hover:opacity-80">Process</a>
+      <a href="#pricing" class="hover:opacity-80">Packages</a>
+      <a href="#contact" class="hover:opacity-80">Contact</a>
+    </nav>
+
+    <button id="menuBtn" class="md:hidden rounded-md border border-white/15 px-3 py-2">☰</button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobileNav" class="hidden md:hidden bg-black/80 backdrop-blur border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 grid gap-3 text-sm">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#pricing">Packages</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.trendthugs.com" target="_blank" class="rounded-md border border-white/20 px-4 py-2 text-center">Visit Website ↗</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="relative mesh overflow-hidden">
+  <!-- floating blobs -->
+  <div class="pointer-events-none absolute inset-0">
+    <div class="blob absolute -left-16 top-24 h-72 w-72 rounded-full bg-white animate-float"></div>
+    <div class="blob absolute right-0 top-10 h-80 w-80 rounded-full bg-white/90 animate-float" style="animation-delay:.5s"></div>
+    <div class="blob absolute left-1/2 -translate-x-1/2 -bottom-20 h-72 w-72 rounded-full bg-white/70 animate-float" style="animation-delay:1s"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="py-16 md:py-24 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <!-- Text -->
+      <div class="max-w-2xl lg:pr-10">
+        <p class="uppercase tracking-[.22em] text-white/70 font-semibold reveal">Delhi • India</p>
+        <h1 class="mt-3 font-display text-4xl md:text-5xl xl:text-6xl leading-[1.1] reveal" style="transition-delay:.05s">
+          We create content that converts.
+        </h1>
+        <p class="mt-5 text-white/80 reveal" style="transition-delay:.1s">
+          A 360° social media marketing agency & production house—generating reach, sales and brand-love with high-quality content and performance growth.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3 reveal" style="transition-delay:.15s">
+          <a href="#contact" class="rounded-full bg-white text-black px-6 py-3 font-semibold shadow-soft hover:brightness-90 transition">Book a Shoot / Campaign</a>
+        </div>
+
+        <!-- Stats -->
+        <div class="mt-8 grid grid-cols-3 gap-4">
+          <div class="rounded-xl bg-white/5 ring-1 ring-white/10 p-4 text-center backdrop-blur reveal">
+            <div class="text-2xl font-extrabold">360°</div>
+            <div class="text-[11px] text-white/70 mt-1">Marketing</div>
+          </div>
+          <div class="rounded-xl bg-white/5 ring-1 ring-white/10 p-4 text-center backdrop-blur reveal" style="transition-delay:.05s">
+            <div class="text-2xl font-extrabold">Production</div>
+            <div class="text-[11px] text-white/70 mt-1">Shoots • Edits</div>
+          </div>
+          <div class="rounded-xl bg-white/5 ring-1 ring-white/10 p-4 text-center backdrop-blur reveal" style="transition-delay:.1s">
+            <div class="text-2xl font-extrabold">Growth</div>
+            <div class="text-[11px] text-white/70 mt-1">Listing • Sales</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div class="rounded-3xl overflow-hidden ring-1 ring-white/15 shadow-glow reveal lg:pl-6">
+        <img class="w-full h-full max-h-[560px] object-cover"
+             src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1600&auto=format&fit=crop"
+             alt="Creative production studio">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="relative bg-black border-t border-white/10">
+  <div class="absolute inset-0 bg-grid bg-[length:18px_18px] opacity-[.12]"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <div class="flex items-end justify-between gap-6">
+      <h2 class="font-display text-3xl md:text-4xl reveal">Services</h2>
+      <a href="#contact" class="hidden md:inline-block rounded-full border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition reveal">Start a Project</a>
+    </div>
+
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <article class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 backdrop-blur shadow-soft reveal">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold">Content Production</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-white/10">Studio/On-site</span>
+        </div>
+        <p class="text-white/70 mt-2 text-sm">Photo & video shoots, edits, reels, shorts, motion graphics, A+ product content.</p>
+      </article>
+
+      <article class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 backdrop-blur shadow-soft reveal" style="transition-delay:.05s">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold">Social Media Management</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-white/10">Always-on</span>
+        </div>
+        <p class="text-white/70 mt-2 text-sm">Calendars, publishing, community, influencer collabs, analytics & reporting.</p>
+      </article>
+
+      <article class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 backdrop-blur shadow-soft reveal" style="transition-delay:.1s">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold">Paid Growth</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-white/10">Performance</span>
+        </div>
+        <p class="text-white/70 mt-2 text-sm">Meta, Google, YouTube ads. Funnels, landing pages & conversion tracking.</p>
+      </article>
+
+      <article class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 backdrop-blur shadow-soft reveal" style="transition-delay:.15s">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold">Listings & Storefronts</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-white/10">Commerce</span>
+        </div>
+        <p class="text-white/70 mt-2 text-sm">Product pages, marketplaces, UGC, A/B creatives, SEO & CRO for sales lift.</p>
+      </article>
+
+      <article class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 backdrop-blur shadow-soft reveal" style="transition-delay:.2s">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold">Brand & Strategy</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-white/10">Positioning</span>
+        </div>
+        <p class="text-white/70 mt-2 text-sm">Narrative, identity, messaging, content pillars, creator playbooks.</p>
+      </article>
+
+      <article class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 backdrop-blur shadow-soft reveal" style="transition-delay:.25s">
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold">Analytics & Reporting</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-white/10">Insights</span>
+        </div>
+        <p class="text-white/70 mt-2 text-sm">Dashboards, cohort analysis, creative learnings & media mix modeling lite.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WORK ===== -->
+<section id="work" class="bg-black">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <div class="flex items-end justify-between gap-6">
+      <h2 class="font-display text-3xl md:text-4xl reveal">Featured Work</h2>
+      <a href="#contact" class="hidden md:inline-block rounded-full border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition reveal">Request Case Studies</a>
+    </div>
+
+    <div class="mt-10 grid lg:grid-cols-3 gap-6">
+      <figure class="group overflow-hidden rounded-2xl ring-1 ring-white/10 bg-white/5 reveal">
+        <img class="h-56 w-full object-cover transition group-hover:scale-105"
+             src="https://images.unsplash.com/photo-1495562569060-2eec283d3391?q=80&w=1600&auto=format&fit=crop" alt="Lifestyle shoot">
+        <figcaption class="p-4 text-sm text-white/80">Lifestyle vertical videos • Reels package • 2.3M reach</figcaption>
+      </figure>
+      <figure class="group overflow-hidden rounded-2xl ring-1 ring-white/10 bg-white/5 reveal" style="transition-delay:.05s">
+        <img class="h-56 w-full object-cover transition group-hover:scale-105"
+             src="https://images.unsplash.com/photo-1520975922284-95e86a6dfcad?q=80&w=1600&auto=format&fit=crop" alt="Brand content">
+        <figcaption class="p-4 text-sm text-white/80">A+ product pages • 18% CVR lift • Multi-format set</figcaption>
+      </figure>
+      <figure class="group overflow-hidden rounded-2xl ring-1 ring-white/10 bg-white/5 reveal" style="transition-delay:.1s">
+        <img class="h-56 w-full object-cover transition group-hover:scale-105"
+             src="https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=2000&auto=format&fit=crop" alt="Studio production">
+        <figcaption class="p-4 text-sm text-white/80">Studio production • 30 creatives/month • Always-on</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section id="process" class="bg-black border-t border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <h2 class="font-display text-3xl md:text-4xl reveal">How We Work</h2>
+    <p class="text-white/70 mt-2 reveal" style="transition-delay:.05s">Simple, transparent, outcome-focused.</p>
+
+    <div class="mt-10 grid md:grid-cols-4 gap-6">
+      <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 backdrop-blur reveal">
+        <div class="text-3xl font-extrabold">01</div>
+        <h3 class="font-semibold mt-2">Discovery</h3>
+        <p class="text-sm text-white/70 mt-1">Goals, audience, channels, resources.</p>
+      </div>
+      <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 backdrop-blur reveal" style="transition-delay:.05s">
+        <div class="text-3xl font-extrabold">02</div>
+        <h3 class="font-semibold mt-2">Plan</h3>
+        <p class="text-sm text-white/70 mt-1">Calendar, formats, media mix, KPIs.</p>
+      </div>
+      <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 backdrop-blur reveal" style="transition-delay:.1s">
+        <div class="text-3xl font-extrabold">03</div>
+        <h3 class="font-semibold mt-2">Produce</h3>
+        <p class="text-sm text-white/70 mt-1">Shoot, edit, ship—fast creative loops.</p>
+      </div>
+      <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 backdrop-blur reveal" style="transition-delay:.15s">
+        <div class="text-3xl font-extrabold">04</div>
+        <h3 class="font-semibold mt-2">Scale</h3>
+        <p class="text-sm text-white/70 mt-1">Iterate via insights to hit targets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section id="pricing" class="bg-black">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <h2 class="font-display text-3xl md:text-4xl reveal">Packages</h2>
+    <p class="text-white/70 mt-2 reveal" style="transition-delay:.05s">Modular retainers that grow with you.</p>
+
+    <div class="mt-10 grid md:grid-cols-3 gap-6">
+      <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 backdrop-blur flex flex-col reveal">
+        <h3 class="font-semibold text-lg">Starter</h3>
+        <p class="text-white/70 text-sm mt-1">For creators & local brands</p>
+        <ul class="mt-4 space-y-2 text-sm text-white/80">
+          <li>• 8–10 creatives / month</li>
+          <li>• Basic SMM + scheduling</li>
+          <li>• Monthly insights report</li>
+        </ul>
+        <a href="#contact" class="mt-6 rounded-full border border-white/20 px-4 py-2 text-center hover:bg-white hover:text-black transition">Enquire</a>
+      </div>
+
+      <div class="rounded-2xl bg-white/10 ring-1 ring-white/20 p-6 backdrop-blur flex flex-col shadow-soft reveal" style="transition-delay:.05s">
+        <h3 class="font-semibold text-lg">Growth</h3>
+        <p class="text-white/70 text-sm mt-1">For scaling D2C & services</p>
+        <ul class="mt-4 space-y-2 text-sm text-white/80">
+          <li>• 20–25 creatives / month</li>
+          <li>• SMM + community + collabs</li>
+          <li>• Paid ads setup & optimization</li>
+        </ul>
+        <a href="#contact" class="mt-6 rounded-full bg-white text-black px-4 py-2 text-center hover:brightness-90 transition">Request Quote</a>
+      </div>
+
+      <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 backdrop-blur flex flex-col reveal" style="transition-delay:.1s">
+        <h3 class="font-semibold text-lg">Enterprise</h3>
+        <p class="text-white/70 text-sm mt-1">Full-funnel media + production</p>
+        <ul class="mt-4 space-y-2 text-sm text-white/80">
+          <li>• Custom monthly creative plan</li>
+          <li>• Advanced performance stack</li>
+          <li>• Dedicated production days</li>
+        </ul>
+        <a href="#contact" class="mt-6 rounded-full border border-white/20 px-4 py-2 text-center hover:bg-white hover:text-black transition">Book a Call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="bg-black border-t border-white/10">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <div class="grid lg:grid-cols-2 gap-10 items-start">
+      <div class="reveal">
+        <h2 class="font-display text-3xl md:text-4xl">Let’s build your next hit.</h2>
+        <p class="text-white/70 mt-2">Tell us about your brand, shoot requirements, and growth goals—we’ll reply fast.</p>
+
+        <div class="mt-6 space-y-2 text-sm text-white/80">
+          <p><strong>Website:</strong> <a href="https://www.trendthugs.com" target="_blank" class="underline decoration-white/30 hover:decoration-white">trendthugs.com</a></p>
+          <p><strong>Email:</strong> <a href="mailto:contact@trendthugs.com" class="underline decoration-white/30 hover:decoration-white">contact@trendthugs.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+917678338004" class="underline decoration-white/30 hover:decoration-white">+91 76783 38004</a></p>
+          <p class="text-white/60">Delhi • India</p>
+        </div>
+      </div>
+
+      <form class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 backdrop-blur space-y-4 reveal">
+        <div class="grid sm:grid-cols-2 gap-3">
+          <input class="w-full rounded-lg bg-black/50 border border-white/15 px-4 py-3 outline-none focus:ring-2 focus:ring-white/30" placeholder="Your Name" required />
+          <input type="email" class="w-full rounded-lg bg-black/50 border border-white/15 px-4 py-3 outline-none focus:ring-2 focus:ring-white/30" placeholder="Email" required />
+        </div>
+        <input class="w-full rounded-lg bg-black/50 border border-white/15 px-4 py-3 outline-none focus:ring-2 focus:ring-white/30" placeholder="Brand / Company" />
+        <textarea rows="4" class="w-full rounded-lg bg-black/50 border border-white/15 px-4 py-3 outline-none focus:ring-2 focus:ring-white/30" placeholder="Tell us about your project (deliverables, timeline, budget)…"></textarea>
+        <div class="flex flex-wrap gap-3">
+          <button class="rounded-full bg-white text-black px-6 py-3 font-semibold hover:brightness-90 transition" type="submit">Send Enquiry</button>
+          <a href="#pricing" class="rounded-full border border-white/20 px-6 py-3 hover:bg-white/10 transition">See Packages</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-black border-t border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-sm text-white/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p>© <span id="y"></span> Trend Thugs. All rights reserved.</p>
+    <nav class="flex items-center gap-5">
+      <a href="#services" class="hover:text-white">Services</a>
+      <a href="#work" class="hover:text-white">Work</a>
+      <a href="#contact" class="hover:text-white">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- Floating “Designed by” badge (replace logo path if needed) -->
+<a href="#" class="group fixed bottom-4 right-4 z-50 flex items-center gap-3 rounded-full border border-white/15 bg-white/90 px-4 py-3 backdrop-blur shadow-soft hover:shadow-glow">
+  <img src="logo.jpg" alt="Talentronaut Technologies" class="h-10 w-10 rounded-full ring-2 ring-black/10 object-cover"/>
+  <div class="leading-tight">
+    <div class="text-[11px] font-semibold text-black/70">Designed by</div>
+    <div class="text-xs font-bold text-black -mt-0.5">Talentronaut Technologies</div>
+  </div>
+</a>
+
+<!-- ===== Scripts: nav, progress, reveals ===== -->
+<script>
+  // Year
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // Mobile nav
+  const btn = document.getElementById('menuBtn');
+  const mnav = document.getElementById('mobileNav');
+  btn.addEventListener('click', ()=> mnav.classList.toggle('hidden'));
+
+  // Scroll progress
+  const bar = document.getElementById('scrollbar');
+  window.addEventListener('scroll', ()=>{
+    const h = document.documentElement, sc = h.scrollTop, max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (sc / max) * 100 + '%';
+  });
+
+  // Reveal on scroll (stagger supported via inline transition-delay)
+  const io = new IntersectionObserver((entries,obs)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('show');
+        obs.unobserve(e.target);
+      }
+    });
+  }, {threshold:.14, rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+</script>
+</body>
+</html>
